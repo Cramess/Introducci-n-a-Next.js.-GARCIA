@@ -64,7 +64,7 @@ export default function SearchMovies() {
 
       try {
         const response = await axios.get(
-          `http://www.omdbapi.com/?apikey=${apiKey}&s=${encodeURIComponent(searchKey)}${year ? `&y=${year}` : ''}`,
+          `/api/movies?search=${encodeURIComponent(searchKey)}${year ? `&year=${year}` : ''}`,
           { signal: controller.signal }
         )
 
@@ -98,7 +98,7 @@ export default function SearchMovies() {
 
     try {
       const response = await axios.get(
-        `http://www.omdbapi.com/?i=${id}&apikey=${apiKey}`
+        `/api/movies?id=${id}`
       )
 
       if (response.data.Response === 'True') {
